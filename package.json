@@ -1,0 +1,23 @@
+{
+  "name": "jquery-ujs-plus",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "main": "lib/rails.js",
+  "author": "sonicgarden",
+  "repository": "https://github.com/SonicGarden/jquery-ujs-plus",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0"
+  },
+  "files": [
+    "README.md",
+    "package.json",
+    "lib"
+  ]
+}
