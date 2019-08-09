@@ -7,9 +7,11 @@
   // https://github.com/rails/jquery-ujs/blob/3bff9e049afcb38191c6eb470062b9e51f46e535/src/rails.js#L294
   // eslint-disable-next-line no-param-reassign
   $.rails.allowAction = (element) => {
-    const form = element.closest('form').get(0);
-    if (form && form.checkValidity && !form.checkValidity()) {
-      return true;
+    if ($(element).is('input[type="submit"],button[type="submit"]')) {
+      const form = element.closest('form').get(0);
+      if (form && form.checkValidity && !form.checkValidity()) {
+        return true;
+      }
     }
 
     return origAllowAction(element);
