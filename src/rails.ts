@@ -33,12 +33,25 @@ interface JQueryStatic {
       $.rails.disableFormElements($(form));
     }, 20);
 
+    const dataType = form.dataset.type || ($.ajaxSettings && $.ajaxSettings.dataType);
+
     $.ajax({
+      dataType,
       type: form.method || 'POST',
       url: form.action,
       data: formData,
       processData: false,
       contentType: false,
+      beforeSend: (xhr, settings) => {
+        if (settings.dataType === undefined && settings.accepts) {
+          xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
+        }
+        if ($.rails.fire(form, 'ajax:beforeSend', [xhr, settings])) {
+          $(form).trigger('ajax:send', xhr);
+        } else {
+          return false;
+        }
+      },
     })
       .done((...args: any) => {
         $(form).trigger('ajax:success', args);
