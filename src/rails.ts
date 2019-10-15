@@ -46,7 +46,7 @@ interface JQueryStatic {
         if (settings.dataType === undefined && settings.accepts) {
           xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
         }
-        if ($.rails.fire(form, 'ajax:beforeSend', [xhr, settings])) {
+        if ($.rails.fire($(form), 'ajax:beforeSend', [xhr, settings])) {
           $(form).trigger('ajax:send', xhr);
         } else {
           return false;
