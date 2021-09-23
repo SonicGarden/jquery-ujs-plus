@@ -7,5 +7,8 @@ yarn install jquery-ujs-plus
 ```
 
 ```javascript
-import 'jquery-ujs-plus'
+import $ from 'jquery'
+import jqueryUjsPlusInit from 'jquery-ujs-plus'
+
+jqueryUjsPlusInit($)
 ```

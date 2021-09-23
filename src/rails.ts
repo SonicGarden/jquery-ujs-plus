@@ -1,8 +1,14 @@
-interface JQueryStatic {
-  rails: any
+import jqueryUjsInit from 'jquery-ujs'
+
+declare global {
+  interface JQueryStatic {
+    rails: any
+  }
 }
 
-(function ($) {
+export default function jqueryUjsPlusInit($: JQueryStatic) {
+  jqueryUjsInit($)
+
   const { allowAction } = $.rails;
   const origAllowAction = allowAction.bind($.rails);
 
@@ -68,4 +74,4 @@ interface JQueryStatic {
     handleRemote(currentTarget);
     return false;
   });
-}(jQuery));
+}
